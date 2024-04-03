@@ -39,8 +39,18 @@ func main() {
 		cntVal--
 		fibonachi()
 	}
-
 	fibonachi()
+
+	//Проверка
+	fmt.Println(cntVal)
+	f7 := func() {
+		cntVal -= 5
+		fmt.Println(cntVal)
+	}
+
+	f7()
+	cntVal = 10
+	f7()
 
 }
 
