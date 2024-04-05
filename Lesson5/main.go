@@ -5,7 +5,19 @@ import (
 	"strconv"
 )
 
+func change(p *int) {
+	*p++
+}
+
 type square int
+
+func toStr(s square) string {
+	return strconv.Itoa(int(s)) + " м²"
+}
+
+func (s *square) toStr() string {
+	return strconv.Itoa(int(*s)) + " м²"
+}
 
 func main() {
 	//Задача 5.1
@@ -45,13 +57,6 @@ func main() {
 	var s8 square = 34
 	s8 += 10
 	fmt.Println(toStr(s8))
+	fmt.Println(s8.toStr()) //с методом
 
-}
-
-func change(p *int) {
-	*p++
-}
-
-func toStr(s square) string {
-	return strconv.Itoa(int(s)) + " м²"
 }
