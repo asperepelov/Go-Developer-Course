@@ -2,24 +2,24 @@ package main
 
 import "fmt"
 
-type fruit string
+type fruitName string
 type count int
 
 // Задача 9.1
-func fruitMarket(f fruit) {
-	fruits := map[fruit]count{"апельсин": 5, "яблоки": 3, "сливы": 1, "груши": 0}
-	cnt, ok := fruits[f]
+func fruitMarket(name fruitName) {
+	fruits := map[fruitName]count{"апельсин": 5, "яблоки": 3, "сливы": 1, "груши": 0}
+	cnt, ok := fruits[name]
 	if !ok {
-		fmt.Printf("%s отсутствует в номенклатуре магазина!\n", f)
+		fmt.Printf("%s отсутствует в номенклатуре магазина!\n", name)
 		return
 	}
 
 	if cnt == 0 {
-		fmt.Printf("%s - %d, привозить больше?\n", f, cnt)
+		fmt.Printf("%s - %d, привозить больше?\n", name, cnt)
 		return
 	}
 
-	fmt.Printf("%s - %d\n", f, cnt)
+	fmt.Printf("%s - %d\n", name, cnt)
 }
 
 func main() {
@@ -67,13 +67,13 @@ type foodKind int8
 type foodName string
 
 const (
-	FRUITS     foodKind = 1
-	VEGETABLES foodKind = 2
+	FoodKindFruits     foodKind = 1
+	FoodKindVegetables foodKind = 2
 )
 
 func checkFood(name foodName) {
-	foods := map[foodName]foodKind{"апельсин": FRUITS, "яблоко": FRUITS, "сливы": FRUITS, "груша": FRUITS,
-		"тыква": VEGETABLES, "огурец": VEGETABLES, "помидор": VEGETABLES}
+	foods := map[foodName]foodKind{"апельсин": FoodKindFruits, "яблоко": FoodKindFruits, "сливы": FoodKindFruits, "груша": FoodKindFruits,
+		"тыква": FoodKindVegetables, "огурец": FoodKindVegetables, "помидор": FoodKindVegetables}
 
 	kind, ok := foods[name]
 	if !ok {
@@ -81,7 +81,7 @@ func checkFood(name foodName) {
 		return
 	}
 
-	if kind == FRUITS {
+	if kind == FoodKindFruits {
 		fmt.Printf("%s - это фрукт\n", name)
 		return
 	}
