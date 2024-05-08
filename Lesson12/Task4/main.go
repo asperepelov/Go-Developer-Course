@@ -14,7 +14,16 @@ type Duck struct {
 }
 
 func (d *Duck) Sing() string {
+	//4-й вариант. Проверка указателя и определение поведения по умолчанию
+	if d == nil {
+		return DefaultSing()
+	}
 	return d.voice
+}
+
+// 4-й вариант. Определение поведения по умолчанию
+func DefaultSing() string {
+	return "кря для не созданного экземпляра"
 }
 
 func main() {
@@ -37,9 +46,18 @@ func main() {
 	}
 	fmt.Println(song)
 
-	//3-й вариант. во избежание путаницы указывать получателя  без указателя
+	//3-й вариант. во избежание путаницы указывать получателя без указателя
+	//это вынудит явно создавать экземпляр
 	//func (d Duck) Sing() string
 
+	// 4-й вариант. Определение поведения без использования поля экземпляра
+	var d4 *Duck
+	song, err = Sing(d4)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	fmt.Println(song)
 }
 
 func Sing(b Bird) (string, error) {
